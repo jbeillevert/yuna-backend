@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { BancoModule } from './banco/banco.module';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './tools/auth/auth.module';
 
 @Module({
   imports: [BancoModule, AuthModule],
