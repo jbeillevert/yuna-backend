@@ -1,6 +1,6 @@
 import { City } from "src/yuna/infos/cities/city.model";
 
-export class Shelter {
+export class ShelterModel {
     constructor(
         public id: number,
         public name: string,
