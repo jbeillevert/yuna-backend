@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BancoModule } from './banco/banco.module';
-import { AuthModule } from './tools/auth/auth.module';
+import { ShelterModule } from './yuna/objects/shelters/shelter.module';
 
 @Module({
-  imports: [BancoModule, AuthModule],
+  imports: [ShelterModule],
   providers: [],
 })
 export class AppModule {}

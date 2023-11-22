@@ -19,6 +19,11 @@ export class ShelterService {
     }
 
     async getAllShelterService() {
+        try {
+            return await this.shelterQueries.getAllShelterQuery()
+        } catch (error) {
+            throw new BadRequestException(error.message)
+        }
 
     }
 

@@ -1,13 +1,16 @@
-import knex from "../../../../db";
 import supabase from "../../../../db";
 
 export class ShelterQueries {
+    async getAllShelterQuery() {
+        
+            const { data, error } = await supabase
+                .from('shelter')
+                .select('*')
+
+            return data
+
+    }
 
     
 }
 
-const getAllShelterQuery = async () {
-    let { data: shelter, error } = await supabase
-    .from('shelter')
-    .select('*') 
-}
