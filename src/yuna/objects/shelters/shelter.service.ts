@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException, ForbiddenException } from '@nestjs/common';
 import { ShelterQueries } from './shelterQueries';
 import { ShelterModel } from './shelter.model';
-import { City } from 'src/yuna/infos/cities/city.model';
 
 
 @Injectable() 
@@ -10,7 +9,12 @@ export class ShelterService {
 
     public shelterList: ShelterModel[] = []
 
-    async createShelterService(name: string, adress: string, cityId: City) {
+    async createShelterService(name: string, adress: string, cityID: number) {
+        try {
+            return await this.shelterQueries.createShelterQuery(name, adress, cityID)
+        } catch (error) {
+            throw new BadRequestException(error.message)
+        }
         
     }
 
@@ -27,7 +31,12 @@ export class ShelterService {
 
     }
 
-    async getOneShelterService(id: number) {
+    async getOneShelterService(id: string) {
+        try {
+            return await this.shelterQueries.getOneShelterQuery(id)
+        } catch (error) {
+            throw new BadRequestException(error.message)
+        }
 
     }
 

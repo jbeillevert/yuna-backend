@@ -1,1 +1,1 @@
-{"version":3,"file":"process-account.dto.js","sourceRoot":"","sources":["../../../../src/banco/dto/process-account.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAA4C;AAG5C,MAAa,gBAAgB;CAK5B;AALD,4CAKC;AAFG;IAFC,IAAA,uBAAK,GAAE;IACP,IAAA,qBAAG,EAAC,EAAE,CAAC;;uDACa;AAIzB,MAAa,iBAAiB;CAG7B;AAHD,8CAGC;AADG;IADC,IAAA,uBAAK,GAAE;;yDACc"}
+{"version":3,"file":"process-account.dto.js","sourceRoot":"","sources":["../../../../src/banco/dto/process-account.dto.ts"],"names":[],"mappings":""}

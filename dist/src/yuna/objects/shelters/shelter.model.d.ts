@@ -1,8 +1,9 @@
-import { City } from "src/yuna/infos/cities/city.model";
+import { Timestamp } from "typeorm";
 export declare class ShelterModel {
-    id: number;
+    id: string;
+    created_at: Timestamp;
     name: string;
     adress: string;
-    cityId: City;
-    constructor(id: number, name: string, adress: string, cityId: City);
+    cityID: number;
+    constructor(id: string, created_at: Timestamp, name: string, adress: string, cityID: number);
 }

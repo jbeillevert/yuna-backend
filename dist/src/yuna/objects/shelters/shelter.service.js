@@ -17,7 +17,13 @@ let ShelterService = class ShelterService {
         this.shelterQueries = shelterQueries;
         this.shelterList = [];
     }
-    async createShelterService(name, adress, cityId) {
+    async createShelterService(name, adress, cityID) {
+        try {
+            return await this.shelterQueries.createShelterQuery(name, adress, cityID);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
     }
     async updateShelterService(id, updateData) {
     }
@@ -30,6 +36,12 @@ let ShelterService = class ShelterService {
         }
     }
     async getOneShelterService(id) {
+        try {
+            return await this.shelterQueries.getOneShelterQuery(id);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
     }
     async deleteShelterService(id) {
     }
