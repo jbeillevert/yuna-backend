@@ -17,7 +17,7 @@ Refuge :
 
 - Création d’un refuge 🟢
 - modification de son propre refuge 🟢
-- suppression de son propre refuge
+- suppression de son propre refuge 🟢
 
 Famille d’accueil : 
 

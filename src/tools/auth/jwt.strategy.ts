@@ -1,27 +1,29 @@
-// import { Injectable, UnauthorizedException } from '@nestjs/common';
-// import { PassportStrategy } from '@nestjs/passport';
-// import { ExtractJwt, Strategy } from 'passport-jwt';
-// import { AuthService } from './auth.service';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { AuthService } from './auth.service';
+const dotenv = require('dotenv')
+require('dotenv').config()
 
-// @Injectable()
-// export class JwtStrategy extends PassportStrategy(Strategy) {
-//   constructor(private readonly authService: AuthService) {
-//     super({
-//       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-//       secretOrKey: 'clesecretedetest', // variable environnement
-//     });
-//   }
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
+  constructor(private readonly authService: AuthService) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: process.env.JWT_SECRET, // variable environnement
+    });
+  }
 
-//   async validate(payload: any) {  
+  async validate(payload: any) {  
   
-//     const user = await this.authService.validateUserById(payload.userId)
+    const user = await this.authService.validateUserById(payload.userId)
     
     
 
-//     if (!user) {
-//       throw new UnauthorizedException()
-//     }
+    if (!user) {
+      throw new UnauthorizedException()
+    }
     
-//     return user;
-//   }
-// }
+    return user;
+  }
+}
