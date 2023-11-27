@@ -25,7 +25,13 @@ let ShelterService = class ShelterService {
             throw new common_1.BadRequestException(error.message);
         }
     }
-    async updateShelterService(id, updateData) {
+    async updateShelterService(id, name, adress, cityID) {
+        try {
+            return await this.shelterQueries.updateShelterQuery(id, name, adress, cityID);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
     }
     async getAllShelterService() {
         try {
@@ -44,6 +50,12 @@ let ShelterService = class ShelterService {
         }
     }
     async deleteShelterService(id) {
+        try {
+            return await this.shelterQueries.deleteShelterQuery(id);
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
     }
 };
 exports.ShelterService = ShelterService;

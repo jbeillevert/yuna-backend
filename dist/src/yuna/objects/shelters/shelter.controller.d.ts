@@ -1,5 +1,5 @@
 import { ShelterService } from './shelter.service';
-import { CreateShelterDto } from './shelter.dto';
+import { ShelterDto } from './shelter.dto';
 export declare class ShelterController {
     private shelterService;
     constructor(shelterService: ShelterService);
@@ -13,5 +13,7 @@ export declare class ShelterController {
         adress: any;
         cityID: any;
     }[]>;
-    createShelter(createShelterDto: CreateShelterDto, req: any): Promise<void>;
+    createShelter(ShelterDto: ShelterDto, req: any): Promise<void>;
+    updateShelter(id: string, ShelterDto: ShelterDto, req: any): Promise<void>;
+    deleteShelter(id: string, req: any): Promise<void>;
 }

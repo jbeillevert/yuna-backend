@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Req, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Req, Param } from '@nestjs/common';
 import { ShelterService } from './shelter.service';
-import { CreateShelterDto } from './shelter.dto'
+import { ShelterDto } from './shelter.dto'
 
 @Controller('api/shelter')
 export class ShelterController {
@@ -17,12 +17,28 @@ export class ShelterController {
     }
 
     @Post('/create')
-    async createShelter(@Body() createShelterDto: CreateShelterDto, @Req() req) {
+    async createShelter(@Body() ShelterDto: ShelterDto, @Req() req) {
 
 
-        const { name, adress, cityID } = createShelterDto
+        const { name, adress, cityID } = ShelterDto
         return this.shelterService.createShelterService(name, adress, cityID)
     }
+
+
+    @Put('/:id')
+    async updateShelter(@Param('id') id: string, @Body() ShelterDto: ShelterDto, @Req() req) {
+
+        const { name, adress, cityID } = ShelterDto
+        return this.shelterService.updateShelterService(id, name, adress, cityID)
+    }
+
+    @Delete('/:id') 
+    async deleteShelter(@Param('id') id: string, @Req() req) {
+        return this.shelterService.deleteShelterService(id)
+    }
+
+
+
 
 
 

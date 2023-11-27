@@ -1,9 +1,5 @@
-export declare class CreateShelterDto {
+export declare class ShelterDto {
     name: string;
     adress: string;
     cityID: number;
-}
-export declare class LoginDto {
-    email: string;
-    password: string;
 }

@@ -9,37 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginDto = exports.CreateShelterDto = void 0;
+exports.ShelterDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateShelterDto {
+class ShelterDto {
 }
-exports.CreateShelterDto = CreateShelterDto;
+exports.ShelterDto = ShelterDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateShelterDto.prototype, "name", void 0);
+], ShelterDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateShelterDto.prototype, "adress", void 0);
+], ShelterDto.prototype, "adress", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
-], CreateShelterDto.prototype, "cityID", void 0);
-class LoginDto {
-}
-exports.LoginDto = LoginDto;
-__decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], LoginDto.prototype, "email", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], LoginDto.prototype, "password", void 0);
+], ShelterDto.prototype, "cityID", void 0);
 //# sourceMappingURL=shelter.dto.js.map

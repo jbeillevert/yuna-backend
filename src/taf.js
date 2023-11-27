@@ -1,34 +1,42 @@
     /*
 
-    Bug fixes :
-    - 🟢 supprimer app.service
-    - 🟢 retourner tableau vide au lieu d'erreur (showAllAccounts - bancoService)
-    - 🟢 changer les noms en français
-    - 🟢 réparer bug requete create account
-    - 🟢 mettre en place variable d'environnement
-    - 🟢 test variables d'environnement
-    - 🟢 revoir les codes d'erreur banco
-    - revoir code erreur 403 (reservé auth) (412 409 422)
-    - renvoyer json au lieu de texte brut
+> L’application est un système de gestion pour les refuges animalier, elle permet de rassembler toutes les données lié à l’activité au même endroit.
 
-    New features :
-    - 🟢 Ajouter DTO
-    - 🟢 knex migration + seeds
-    - 🟢 Construire Query sql avec knex query builder
-    - 🟢 Création Repository
-    - 🟢 Intégration répository dans la logique métier
-    - 🟢 test bdd
-    - 🟢 Création de compte 
-    - 🟢 hashage mot de passe
-    - 🟢 Authentification 
-    - 🟢 token jwt 
-    - 🟢 test authentification
-    - 🟢 Protection routes API
-    - 🟢 Ajouter requete delete account
-    - 🟢 changer l'id des user par un uuid
-    - 🟢 Création role Admin
-    - 🟢 connexion a l'admin
-    - 🟠 verifier si l'user est admin pour autoriser la requete
-    - Documentation avec Swagger
+Le programme permet de retrouver, filtrer et trier l’ensemble des informations nécessaire a la gestion quotidienne d’un refuge.
+> 
+
+Pour le MVP : L’application se concentre sur les 4 objets principaux ainsi que leur relations (utilisateurs, refuge, famille d’accueil, et animaux)
+
+Utilisateur : 
+
+- Créer un utilisateur (inscription) 🟢
+- Se logger (connexion) 🟢
+- Suppression utilisateur
+
+Refuge :
+
+- Création d’un refuge 🟢
+- modification de son propre refuge 🟢
+- suppression de son propre refuge
+
+Famille d’accueil : 
+
+- Ajouter des familles d’accueil a son refuge
+- Modifier les familles d’accueil de son refuge
+- Supprimer les familles d’accueil de son refuge
+- Voir toutes les familles d’accueil de son refuge
+
+Animaux :
+
+- Ajouter des animaux
+- Attribuer des animaux a des familles d’accueil
+- consulter la liste des animaux
+- changer le statut d’adoption des animaux
+
+Recherche avancée:
+
+- Filtrage croisé pour retrouver facilement un animal ou une place disponible chez une famille d’accueil
+- liste des filtres animaux : filtre par espèce, par race, par statut d’adoption, par sexe
+- liste des filtres famille d’accueil : par ville, par experience, par espece acceptée, par capacité d’accueil totale et restante, par animaux accueillis
 
     */

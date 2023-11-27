@@ -5,7 +5,7 @@ export declare class ShelterService {
     constructor(shelterQueries: ShelterQueries);
     shelterList: ShelterModel[];
     createShelterService(name: string, adress: string, cityID: number): Promise<void>;
-    updateShelterService(id: number, updateData: Partial<ShelterModel>): Promise<void>;
+    updateShelterService(id: string, name: string, adress: string, cityID: number): Promise<void>;
     getAllShelterService(): Promise<{
         name: any;
         adress: any;
@@ -16,5 +16,5 @@ export declare class ShelterService {
         adress: any;
         cityID: any;
     }[]>;
-    deleteShelterService(id: number): Promise<void>;
+    deleteShelterService(id: string): Promise<void>;
 }

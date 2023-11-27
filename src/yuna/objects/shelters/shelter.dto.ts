@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, MinLength, IsEmail, IsNumber } from 'class-validator'
 
 
-export class CreateShelterDto {
+export class ShelterDto {
     @IsString()
     @IsNotEmpty()
     name: string
@@ -16,12 +16,4 @@ export class CreateShelterDto {
 }
 
 
-export class LoginDto {
-    @IsEmail()
-    @IsNotEmpty()
-    email: string
 
-    @IsString()
-    @IsNotEmpty()
-    password: string
-}

@@ -9,5 +9,8 @@ export declare class ShelterQueries {
         adress: any;
         cityID: any;
     }[]>;
-    createShelterQuery(name: string, adress: string, city: number): Promise<void>;
+    createShelterQuery(name: string, adress: string, cityID: number): Promise<void>;
+    updateShelterQuery(id: string, name: string, adress: string, cityID: number): Promise<void>;
+    deleteShelterQuery(id: string): Promise<void>;
+    if(error: any): void;
 }

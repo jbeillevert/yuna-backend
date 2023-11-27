@@ -18,8 +18,12 @@ export class ShelterService {
         
     }
 
-    async updateShelterService(id: number, updateData: Partial<ShelterModel>) {
-
+    async updateShelterService(id: string, name: string, adress: string, cityID: number) {
+        try {
+            return await this.shelterQueries.updateShelterQuery(id, name, adress, cityID)
+        } catch (error) {
+            throw new BadRequestException(error.message)
+        }
     }
 
     async getAllShelterService() {
@@ -40,7 +44,11 @@ export class ShelterService {
 
     }
 
-    async deleteShelterService(id: number) {
-
+    async deleteShelterService(id: string) {
+        try {
+            return await this.shelterQueries.deleteShelterQuery(id)
+        } catch (error) {
+            throw new BadRequestException(error.message)
+        }
     }
 }
