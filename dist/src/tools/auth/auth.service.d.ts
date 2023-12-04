@@ -1,10 +1,11 @@
-import { AuthRepository } from './auth.repository';
+import { UserQueries } from './userQueries';
 import { user } from './user.model';
 import { JwtService } from '@nestjs/jwt';
 export declare class AuthService {
-    private readonly authRepository;
+    private readonly userQueries;
+    private readonly userList;
     private readonly jwt;
-    constructor(authRepository: AuthRepository, jwt: JwtService);
+    constructor(userQueries: UserQueries, userList: user[], jwt: JwtService);
     private errorUserEmailAlreadyExist;
     private errorUserDontExist;
     private errorWrongPassword;
@@ -13,6 +14,9 @@ export declare class AuthService {
         message: string;
         token: string;
     }>;
-    showAllUsers(): Promise<AuthRepository[]>;
-    validateUserById(userId: number): Promise<user>;
+    showAllUsers(): Promise<{
+        id: any;
+        email: any;
+        shelterID: any;
+    }[]>;
 }

@@ -11,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-const auth_repository_1 = require("./auth.repository");
+const userQueries_1 = require("./userQueries");
 const bcrypt = require("bcrypt");
 const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor(authRepository, jwt) {
-        this.authRepository = authRepository;
+    constructor(userQueries, userList, jwt) {
+        this.userQueries = userQueries;
+        this.userList = userList;
         this.jwt = jwt;
     }
     errorUserEmailAlreadyExist(email) {
@@ -29,23 +30,23 @@ let AuthService = class AuthService {
         throw new common_1.UnauthorizedException(`Erreur : Connexion impossible, identifiants incorrects.`);
     }
     async createAUser(email, password) {
-        const emailExist = await this.authRepository.isUserExistInDBRepository(email);
+        const emailExist = await this.userQueries.isUserExistInDBQuery(email);
         if (emailExist) {
             return this.errorUserEmailAlreadyExist(email);
         }
         else {
             const hashedPassword = await bcrypt.hash(password, 15);
-            await this.authRepository.createAUserRepository(email, hashedPassword);
+            await this.userQueries.createUserQuery(email, hashedPassword);
             return `L'utilisateur ${email} à bien été inscrit.`;
         }
     }
     async logAUser(email, password) {
-        const emailExist = await this.authRepository.isUserExistInDBRepository(email);
+        const emailExist = await this.userQueries.isUserExistInDBQuery(email);
         if (emailExist) {
-            const userConnection = await this.authRepository.findUserByEmailRepository(email);
-            const passwordMatch = await bcrypt.compare(password, userConnection.hashed_password);
+            const userConnection = await this.userQueries.findUserByEmailQuery(email);
+            const passwordMatch = await bcrypt.compare(password, userConnection[0].password);
             if (passwordMatch) {
-                const payload = { userId: userConnection.uuid, email: userConnection.email, role: userConnection.role };
+                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].roleID };
                 const token = this.jwt.sign(payload);
                 return { message: `Vous êtes maintenant connecté avec ${email}`, token: token };
             }
@@ -58,16 +59,12 @@ let AuthService = class AuthService {
         }
     }
     async showAllUsers() {
-        return await this.authRepository.getAllUsersRepository();
-    }
-    async validateUserById(userId) {
-        return this.authRepository.findUserByIdRepository(userId);
+        return await this.userQueries.getAllusersQuery();
     }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [auth_repository_1.AuthRepository,
-        jwt_1.JwtService])
+    __metadata("design:paramtypes", [userQueries_1.UserQueries, Array, jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

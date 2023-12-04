@@ -6,5 +6,6 @@ export declare class user {
     password: string;
     shelterID: number;
     roleID: string;
-    constructor(id: string, created_at: Timestamp, email: string, password: string, shelterID: number, roleID: string);
+    familyID: string;
+    constructor(id: string, created_at: Timestamp, email: string, password: string, shelterID: number, roleID: string, familyID: string);
 }

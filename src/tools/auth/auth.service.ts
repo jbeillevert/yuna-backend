@@ -1,5 +1,5 @@
 import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
-import { AuthRepository } from './auth.repository'
+import { UserQueries } from './userQueries'
 import { user } from './user.model'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
@@ -8,7 +8,8 @@ import { JwtService } from '@nestjs/jwt'
 @Injectable()
 export class AuthService {
     constructor(
-        private readonly authRepository: AuthRepository,
+        private readonly userQueries: UserQueries,
+        private readonly userList: user[],
         private readonly jwt: JwtService
     ) {}
     
@@ -29,27 +30,27 @@ export class AuthService {
 
 
     async createAUser(email: string, password: string) {
-        const emailExist = await this.authRepository.isUserExistInDBRepository(email)
+        const emailExist = await this.userQueries.isUserExistInDBQuery(email)
         
         if (emailExist) {
             return this.errorUserEmailAlreadyExist(email)
         } else {
             const hashedPassword = await bcrypt.hash(password, 15)
-            await this.authRepository.createAUserRepository(email, hashedPassword)
+            await this.userQueries.createUserQuery(email, hashedPassword)
             return `L'utilisateur ${email} à bien été inscrit.`
         }
     }
 
     async logAUser(email: string, password: string) {
-        
-        const emailExist = await this.authRepository.isUserExistInDBRepository(email)
+        const emailExist = await this.userQueries.isUserExistInDBQuery(email)
 
-        if (emailExist) {
-            const userConnection = await this.authRepository.findUserByEmailRepository(email)            
-            const passwordMatch = await bcrypt.compare(password, userConnection.hashed_password)
+
+        if (emailExist) {        
+            const userConnection = await this.userQueries.findUserByEmailQuery(email)            
+            const passwordMatch = await bcrypt.compare(password, userConnection[0].password)
             
             if (passwordMatch) {
-                const payload = { userId: userConnection.uuid, email: userConnection.email, role: userConnection.role }
+                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].roleID }
                 const token = this.jwt.sign(payload)
                 
                 return { message: `Vous êtes maintenant connecté avec ${email}`, token: token }
@@ -64,15 +65,9 @@ export class AuthService {
     }
 
 
-    async showAllUsers(): Promise<AuthRepository[]> {
-        return await this.authRepository.getAllUsersRepository()
+    async showAllUsers() {
+        return await this.userQueries.getAllusersQuery()
 
     }
-
-    async validateUserById(userId: number): Promise<user> {
-        return this.authRepository.findUserByIdRepository(userId);
-      }
-      
-
 
 }

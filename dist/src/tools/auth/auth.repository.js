@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthRepository = void 0;
-const userQueries_1 = require("./db/userQueries");
+const userQueries_1 = require("./userQueries");
 class AuthRepository {
     async getAllUsersRepository() {
         return await (0, userQueries_1.getAllUsersQuery)();

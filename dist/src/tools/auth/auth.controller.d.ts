@@ -3,7 +3,11 @@ import { AuthService } from './auth.service';
 export declare class AuthController {
     private readonly authservice;
     constructor(authservice: AuthService);
-    getAllUsers(req: any): Promise<AuthRepository[]>;
+    getAllUsers(req: any): Promise<{
+        id: any;
+        email: any;
+        shelterID: any;
+    }[]>;
     createAUser(createUserDto: CreateUserDto): Promise<string | void>;
     logAUser(loginDto: LoginDto): Promise<void | {
         message: string;
