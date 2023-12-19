@@ -14,7 +14,7 @@ export declare class AuthService {
         message: string;
         token: string;
     }>;
-    showAllUsers(): Promise<{
+    validateUserById(userId: string): Promise<{
         id: any;
         email: any;
         shelterID: any;

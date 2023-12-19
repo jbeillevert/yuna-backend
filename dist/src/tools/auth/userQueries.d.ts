@@ -5,7 +5,11 @@ export declare class UserQueries {
         email: any;
         shelterID: any;
     }[]>;
-    findUserByIdQuery(id: string): Promise<void>;
+    findUserByIdQuery(id: string): Promise<{
+        id: any;
+        email: any;
+        shelterID: any;
+    }[]>;
     findUserByEmailQuery(email: string): Promise<{
         id: any;
         email: any;

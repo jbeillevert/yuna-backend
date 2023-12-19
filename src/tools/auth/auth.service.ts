@@ -65,9 +65,11 @@ export class AuthService {
     }
 
 
-    async showAllUsers() {
-        return await this.userQueries.getAllusersQuery()
 
-    }
+
+    
+    async validateUserById(userId: string) {
+        return this.userQueries.findUserByIdQuery(userId)
+      }
 
 }

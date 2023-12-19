@@ -22,10 +22,11 @@ class UserQueries {
         return users;
     }
     async findUserByIdQuery(id) {
-        let { data: users, error } = await db_1.default
+        let { data: user, error } = await db_1.default
             .from('users')
             .select('id,email,shelterID')
             .eq('id', id);
+        return user;
     }
     async findUserByEmailQuery(email) {
         let { data: users, error } = await db_1.default

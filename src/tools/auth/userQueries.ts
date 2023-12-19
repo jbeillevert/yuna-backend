@@ -29,11 +29,12 @@ export class UserQueries {
     }
 
     async findUserByIdQuery(id: string) {
-        let { data: users, error } = await supabase
+        let { data: user, error } = await supabase
         .from('users')
         .select('id,email,shelterID')
         .eq('id', id)
 
+        return user
     }
 
     async findUserByEmailQuery(email: string) {

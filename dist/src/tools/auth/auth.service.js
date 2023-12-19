@@ -58,8 +58,8 @@ let AuthService = class AuthService {
             return this.errorUserDontExist();
         }
     }
-    async showAllUsers() {
-        return await this.userQueries.getAllusersQuery();
+    async validateUserById(userId) {
+        return this.userQueries.findUserByIdQuery(userId);
     }
 };
 exports.AuthService = AuthService;

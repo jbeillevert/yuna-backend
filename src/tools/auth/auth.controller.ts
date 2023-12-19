@@ -10,14 +10,6 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
     constructor(private readonly authservice: AuthService) {}
 
-    @Get('/users')
-    @Roles(Role.Admin)
-    @UseGuards(AuthGuard('jwt'), RolesGuard)
-    getAllUsers(@Req() req) {
-        console.log('User in controller:', req.user)
-        
-        return this.authservice.showAllUsers()
-    }
 
     @Post('/signup')
     createAUser(@Body() createUserDto: CreateUserDto) {
