@@ -18,20 +18,20 @@ class UserQueries {
     async getAllusersQuery() {
         let { data: users, error } = await db_1.default
             .from('users')
-            .select('id,email,shelterID');
+            .select('id,email');
         return users;
     }
     async findUserByIdQuery(id) {
         let { data: user, error } = await db_1.default
             .from('users')
-            .select('id,email,shelterID')
+            .select('id,email')
             .eq('id', id);
         return user;
     }
     async findUserByEmailQuery(email) {
         let { data: users, error } = await db_1.default
             .from('users')
-            .select('id,email,password,roleID')
+            .select('id,email,password,role')
             .eq('email', email);
         return users;
     }

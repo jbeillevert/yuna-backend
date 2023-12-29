@@ -15,9 +15,8 @@ const userQueries_1 = require("./userQueries");
 const bcrypt = require("bcrypt");
 const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor(userQueries, userList, jwt) {
+    constructor(userQueries, jwt) {
         this.userQueries = userQueries;
-        this.userList = userList;
         this.jwt = jwt;
     }
     errorUserEmailAlreadyExist(email) {
@@ -31,13 +30,21 @@ let AuthService = class AuthService {
     }
     async createAUser(email, password) {
         const emailExist = await this.userQueries.isUserExistInDBQuery(email);
-        if (emailExist) {
+        if (!emailExist) {
             return this.errorUserEmailAlreadyExist(email);
         }
         else {
-            const hashedPassword = await bcrypt.hash(password, 15);
-            await this.userQueries.createUserQuery(email, hashedPassword);
-            return `L'utilisateur ${email} à bien été inscrit.`;
+            try {
+                const hashedPassword = await bcrypt.hash(password, 15);
+                await this.userQueries.createUserQuery(email, hashedPassword);
+                return `L'utilisateur ${email} à bien été inscrit.`;
+            }
+            catch (error) {
+                if (error.code === '23505') {
+                    return this.errorUserEmailAlreadyExist(email);
+                }
+                throw error;
+            }
         }
     }
     async logAUser(email, password) {
@@ -46,7 +53,7 @@ let AuthService = class AuthService {
             const userConnection = await this.userQueries.findUserByEmailQuery(email);
             const passwordMatch = await bcrypt.compare(password, userConnection[0].password);
             if (passwordMatch) {
-                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].roleID };
+                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].role };
                 const token = this.jwt.sign(payload);
                 return { message: `Vous êtes maintenant connecté avec ${email}`, token: token };
             }
@@ -65,6 +72,7 @@ let AuthService = class AuthService {
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [userQueries_1.UserQueries, Array, jwt_1.JwtService])
+    __metadata("design:paramtypes", [userQueries_1.UserQueries,
+        jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

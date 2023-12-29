@@ -1,13 +1,10 @@
-import { Timestamp } from "typeorm";
 
 export class user {
     constructor(
         public id: string,
-        public created_at: Timestamp,
+        public created_at: Date,
         public email: string,
         public password: string,
-        public shelterID: number,
-        public roleID: string,
-        public familyID: string
+        public role: string,
     ) {}
 }

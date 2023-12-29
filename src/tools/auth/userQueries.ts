@@ -23,7 +23,7 @@ export class UserQueries {
     async getAllusersQuery() {
         let { data: users, error } = await supabase
             .from('users')
-            .select('id,email,shelterID')
+            .select('id,email')
 
         return users
     }
@@ -31,7 +31,7 @@ export class UserQueries {
     async findUserByIdQuery(id: string) {
         let { data: user, error } = await supabase
         .from('users')
-        .select('id,email,shelterID')
+        .select('id,email')
         .eq('id', id)
 
         return user
@@ -40,7 +40,7 @@ export class UserQueries {
     async findUserByEmailQuery(email: string) {
         let { data: users, error } = await supabase
         .from('users')
-        .select('id,email,password,roleID')
+        .select('id,email,password,role')
         .eq('email', email)
 
         return users

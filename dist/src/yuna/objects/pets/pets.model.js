@@ -2,19 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pet = void 0;
 class Pet {
-    constructor(id, creationDate, icad, name, birthDate, rescueDate, adoptionDate, shelterId, race1Id, race2Id, genreId, speciesId) {
+    constructor(id, created_at, ICAD, name, birth_Date, race1, genre, species) {
         this.id = id;
-        this.creationDate = creationDate;
-        this.icad = icad;
+        this.created_at = created_at;
+        this.ICAD = ICAD;
         this.name = name;
-        this.birthDate = birthDate;
-        this.rescueDate = rescueDate;
-        this.adoptionDate = adoptionDate;
-        this.shelterId = shelterId;
-        this.race1Id = race1Id;
-        this.race2Id = race2Id;
-        this.genreId = genreId;
-        this.speciesId = speciesId;
+        this.birth_Date = birth_Date;
+        this.race1 = race1;
+        this.genre = genre;
+        this.species = species;
     }
 }
 exports.Pet = Pet;

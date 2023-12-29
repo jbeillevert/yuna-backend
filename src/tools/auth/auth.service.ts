@@ -3,13 +3,13 @@ import { UserQueries } from './userQueries'
 import { user } from './user.model'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
+import { log } from 'console';
 
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly userQueries: UserQueries,
-        private readonly userList: user[],
         private readonly jwt: JwtService
     ) {}
     
@@ -32,12 +32,21 @@ export class AuthService {
     async createAUser(email: string, password: string) {
         const emailExist = await this.userQueries.isUserExistInDBQuery(email)
         
-        if (emailExist) {
+        if (!emailExist) {
             return this.errorUserEmailAlreadyExist(email)
         } else {
-            const hashedPassword = await bcrypt.hash(password, 15)
-            await this.userQueries.createUserQuery(email, hashedPassword)
-            return `L'utilisateur ${email} à bien été inscrit.`
+            try {
+                const hashedPassword = await bcrypt.hash(password, 15)
+                await this.userQueries.createUserQuery(email, hashedPassword)
+                return `L'utilisateur ${email} à bien été inscrit.`
+            } catch (error) {
+                if (error.code === '23505') {
+                    return this.errorUserEmailAlreadyExist(email);
+                }
+
+                throw error;
+                
+            }
         }
     }
 
@@ -45,12 +54,16 @@ export class AuthService {
         const emailExist = await this.userQueries.isUserExistInDBQuery(email)
 
 
-        if (emailExist) {        
-            const userConnection = await this.userQueries.findUserByEmailQuery(email)            
+
+
+        if (emailExist) {   
+    
+            const userConnection = await this.userQueries.findUserByEmailQuery(email)
             const passwordMatch = await bcrypt.compare(password, userConnection[0].password)
+    
             
             if (passwordMatch) {
-                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].roleID }
+                const payload = { userId: userConnection[0].id, email: userConnection[0].email, role: userConnection[0].role }
                 const token = this.jwt.sign(payload)
                 
                 return { message: `Vous êtes maintenant connecté avec ${email}`, token: token }

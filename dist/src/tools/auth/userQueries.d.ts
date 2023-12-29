@@ -3,18 +3,16 @@ export declare class UserQueries {
     getAllusersQuery(): Promise<{
         id: any;
         email: any;
-        shelterID: any;
     }[]>;
     findUserByIdQuery(id: string): Promise<{
         id: any;
         email: any;
-        shelterID: any;
     }[]>;
     findUserByEmailQuery(email: string): Promise<{
         id: any;
         email: any;
         password: any;
-        roleID: any;
+        role: any;
     }[]>;
     isUserExistInDBQuery(emailTested: string): Promise<{
         email: any;

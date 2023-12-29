@@ -1,4 +1,3 @@
-import { City } from "src/yuna/infos/cities/city.model";
 import { Timestamp } from "typeorm";
 
 export class ShelterModel {

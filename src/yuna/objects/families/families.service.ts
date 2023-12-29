@@ -1,6 +1,4 @@
 import { Injectable, NotFoundException, BadRequestException, ForbiddenException } from '@nestjs/common';
-
-import { City } from 'src/yuna/infos/cities/city.model';
 import { FamiliesQueries } from './familiesQueries';
 import { FamiliesModel } from './families.model';
 

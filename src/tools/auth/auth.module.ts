@@ -5,6 +5,7 @@ import { AuthController } from './auth.controller';
 import { JwtStrategy } from './jwt.strategy';  
 import { PassportModule } from '@nestjs/passport';  
 import { JwtModule } from '@nestjs/jwt';  
+import { UserQueries } from './userQueries'
 // import { RolesGuard } from '../tools/RBAC/roles.guards'
 
 
@@ -16,7 +17,7 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [AuthService, JwtStrategy],  
+  providers: [AuthService, JwtStrategy, UserQueries],  
   controllers: [AuthController],
 })
 
