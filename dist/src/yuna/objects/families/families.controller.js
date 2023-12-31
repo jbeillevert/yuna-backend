@@ -27,12 +27,12 @@ let FamiliesController = class FamiliesController {
         return this.familiesService.getOneFamiliesService(id);
     }
     async createFamily(FamiliesDto, req) {
-        const { firstname, lastname, phone, adress, cityID } = FamiliesDto;
-        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, cityID);
+        const { firstname, lastname, phone, adress, city } = FamiliesDto;
+        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, city);
     }
     async updateFamily(id, FamiliesDto, req) {
-        const { firstname, lastname, phone, adress, cityID } = FamiliesDto;
-        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, cityID);
+        const { firstname, lastname, phone, adress, city } = FamiliesDto;
+        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, city);
     }
     async deleteFamily(id, req) {
         return this.familiesService.deleteFamiliesService(id);
@@ -50,7 +50,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], FamiliesController.prototype, "getOneFamily", null);
 __decorate([
@@ -67,7 +67,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, families_dto_1.FamiliesDto, Object]),
+    __metadata("design:paramtypes", [Number, families_dto_1.FamiliesDto, Object]),
     __metadata("design:returntype", Promise)
 ], FamiliesController.prototype, "updateFamily", null);
 __decorate([
@@ -75,7 +75,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], FamiliesController.prototype, "deleteFamily", null);
 exports.FamiliesController = FamiliesController = __decorate([

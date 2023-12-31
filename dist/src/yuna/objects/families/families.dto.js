@@ -35,8 +35,8 @@ __decorate([
     __metadata("design:type", String)
 ], FamiliesDto.prototype, "phone", void 0);
 __decorate([
-    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], FamiliesDto.prototype, "cityID", void 0);
+    __metadata("design:type", String)
+], FamiliesDto.prototype, "city", void 0);
 //# sourceMappingURL=families.dto.js.map

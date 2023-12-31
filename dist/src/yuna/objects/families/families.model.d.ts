@@ -1,10 +1,10 @@
 export declare class FamiliesModel {
-    id: string;
+    id: number;
     creationDate: Date;
     lastname: string;
     firstname: string;
     adress: string;
     phone: string;
-    cityId: number;
-    constructor(id: string, creationDate: Date, lastname: string, firstname: string, adress: string, phone: string, cityId: number);
+    city: string;
+    constructor(id: number, creationDate: Date, lastname: string, firstname: string, adress: string, phone: string, city: string);
 }

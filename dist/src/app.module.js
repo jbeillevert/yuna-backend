@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const shelter_module_1 = require("./yuna/objects/shelters/shelter.module");
 const auth_module_1 = require("./tools/auth/auth.module");
 const catfact_module_1 = require("./yuna/catFacts/catfact.module");
+const families_module_1 = require("./yuna/objects/families/families.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [shelter_module_1.ShelterModule, auth_module_1.AuthModule, catfact_module_1.CatfactModule],
+        imports: [catfact_module_1.CatfactModule, auth_module_1.AuthModule, families_module_1.FamiliesModule],
         providers: [],
     })
 ], AppModule);

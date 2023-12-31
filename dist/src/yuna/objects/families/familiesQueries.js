@@ -7,7 +7,7 @@ class FamiliesQueries {
         const { data, error } = await db_1.default
             .from('families')
             .select('*')
-            .eq('id', id);
+            .eq('id_family', id);
         if (error) {
             console.error('Error fetching family:', error);
             throw error;
@@ -24,11 +24,11 @@ class FamiliesQueries {
         }
         return data;
     }
-    async createFamilyQuery(lastname, firstname, adress, phone, cityId) {
+    async createFamilyQuery(lastname, firstname, adress, phone, city) {
         const { data, error } = await db_1.default
             .from('families')
             .insert([
-            { lastname: lastname, firstname: firstname, adress: adress, phone: phone, cityID: cityId },
+            { lastname: lastname, firstname: firstname, adress: adress, phone: phone, city: city },
         ])
             .select();
         if (error) {
@@ -36,11 +36,11 @@ class FamiliesQueries {
             throw error;
         }
     }
-    async updateFamiliesQuery(id, lastname, firstname, adress, phone, cityId) {
+    async updateFamiliesQuery(id, lastname, firstname, adress, phone, city) {
         const { data, error } = await db_1.default
             .from('families')
-            .update({ lastname: lastname, firstname: firstname, adress: adress, phone: phone, cityID: cityId })
-            .eq('id', id)
+            .update({ lastname: lastname, firstname: firstname, adress: adress, phone: phone, city: city })
+            .eq('id_family', id)
             .select();
         if (error) {
             console.error('Error update family:', error);
@@ -51,7 +51,7 @@ class FamiliesQueries {
         const { error } = await db_1.default
             .from('families')
             .delete()
-            .eq('id', id);
+            .eq('id_family', id);
         if (error) {
             console.error('Error delete family:', error);
             throw error;

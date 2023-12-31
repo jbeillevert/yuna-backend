@@ -2,12 +2,12 @@
 
 export class FamiliesModel {
     constructor(
-        public id: string,
+        public id: number,
         public creationDate: Date,
         public lastname: string,
         public firstname: string,
         public adress: string,
         public phone: string,
-        public cityId: number, // clé etrangere vers table Cities
+        public city: string, // clé etrangere vers table Cities
     ) {}
 }

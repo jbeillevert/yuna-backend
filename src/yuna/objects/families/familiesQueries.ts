@@ -3,11 +3,11 @@ import supabase from "../../../../db";
 
 export class FamiliesQueries {
 
-    async getOneFamilyQuery(id: string) {
+    async getOneFamilyQuery(id: number) {
         const { data, error } = await supabase
             .from('families')
             .select('*')
-            .eq('id', id)
+            .eq('id_family', id)
 
 
         if (error) {
@@ -33,11 +33,11 @@ export class FamiliesQueries {
         return data
     }
 
-    async createFamilyQuery(lastname: string, firstname: string, adress: string, phone: string, cityId: number) {
+    async createFamilyQuery(lastname: string, firstname: string, adress: string, phone: string, city: string) {
         const { data, error } = await supabase
             .from('families')
             .insert([
-                { lastname: lastname, firstname: firstname, adress: adress, phone: phone, cityID: cityId },
+                { lastname: lastname, firstname: firstname, adress: adress, phone: phone, city: city },
             ])
             .select()
 
@@ -47,11 +47,11 @@ export class FamiliesQueries {
             }            
     }
 
-    async updateFamiliesQuery(id: string, lastname: string, firstname: string, adress: string, phone: string, cityId: number) {
+    async updateFamiliesQuery(id: number, lastname: string, firstname: string, adress: string, phone: string, city: string) {
         const { data, error } = await supabase
             .from('families')
-            .update({ lastname: lastname, firstname: firstname, adress: adress, phone: phone, cityID: cityId })
-            .eq('id', id)
+            .update({ lastname: lastname, firstname: firstname, adress: adress, phone: phone, city: city })
+            .eq('id_family', id)
             .select()
 
             if (error) {
@@ -60,11 +60,11 @@ export class FamiliesQueries {
             }          
     }
 
-    async deleteFamiliesQuery(id: string) {
+    async deleteFamiliesQuery(id: number) {
         const { error } = await supabase
             .from('families')
             .delete()
-            .eq('id', id)
+            .eq('id_family', id)
 
 
             if (error) {

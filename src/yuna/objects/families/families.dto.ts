@@ -18,9 +18,9 @@ export class FamiliesDto {
     @IsNotEmpty()
     phone: string
     
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
-    cityID: number
+    city: string
 }
 
 

@@ -1,7 +1,7 @@
 export declare class FamiliesQueries {
-    getOneFamilyQuery(id: string): Promise<any[]>;
+    getOneFamilyQuery(id: number): Promise<any[]>;
     getAllFamiliesQuery(): Promise<any[]>;
-    createFamilyQuery(lastname: string, firstname: string, adress: string, phone: string, cityId: number): Promise<void>;
-    updateFamiliesQuery(id: string, lastname: string, firstname: string, adress: string, phone: string, cityId: number): Promise<void>;
-    deleteFamiliesQuery(id: string): Promise<void>;
+    createFamilyQuery(lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<void>;
+    updateFamiliesQuery(id: number, lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<void>;
+    deleteFamiliesQuery(id: number): Promise<void>;
 }

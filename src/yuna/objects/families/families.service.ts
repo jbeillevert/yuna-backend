@@ -9,18 +9,18 @@ export class FamiliesService {
 
     public FamiliesList: FamiliesModel[] = []
 
-    async createFamiliesService(lastname: string, firstname: string, adress: string, phone: string, cityId: number) {
+    async createFamiliesService(lastname: string, firstname: string, adress: string, phone: string, city: string) {
         try {
-            return await this.FamiliesQueries.createFamilyQuery(lastname, firstname, adress, phone, cityId)
+            return await this.FamiliesQueries.createFamilyQuery(lastname, firstname, adress, phone, city)
         } catch (error) {
             throw new BadRequestException(error.message)
         }
         
     }
 
-    async updateFamiliesService(id:string, lastname: string, firstname: string, adress: string, phone: string, cityId: number) {
+    async updateFamiliesService(id:number, lastname: string, firstname: string, adress: string, phone: string, city: string) {
         try {
-            return await this.FamiliesQueries.updateFamiliesQuery(id, lastname, firstname, adress, phone, cityId)
+            return await this.FamiliesQueries.updateFamiliesQuery(id, lastname, firstname, adress, phone, city)
         } catch (error) {
             throw new BadRequestException(error.message)
         }
@@ -35,7 +35,7 @@ export class FamiliesService {
 
     }
 
-    async getOneFamiliesService(id: string) {
+    async getOneFamiliesService(id: number) {
         try {
             return await this.FamiliesQueries.getOneFamilyQuery(id)
         } catch (error) {
@@ -44,7 +44,7 @@ export class FamiliesService {
 
     }
 
-    async deleteFamiliesService(id: string) {
+    async deleteFamiliesService(id: number) {
         try {
             return await this.FamiliesQueries.deleteFamiliesQuery(id)
         } catch (error) {

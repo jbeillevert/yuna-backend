@@ -12,27 +12,27 @@ export class FamiliesController {
     }
 
     @Get('/:id')
-    async getOneFamily(@Param('id') id: string, @Req() req) {
+    async getOneFamily(@Param('id') id: number, @Req() req) {
         return this.familiesService.getOneFamiliesService(id)
     }
 
     @Post('/create')
     async createFamily(@Body() FamiliesDto: FamiliesDto, @Req() req) {
 
-        const { firstname, lastname, phone, adress, cityID } = FamiliesDto
-        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, cityID)
+        const { firstname, lastname, phone, adress, city } = FamiliesDto
+        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, city)
     }
 
 
     @Put('/:id')
-    async updateFamily(@Param('id') id: string, @Body() FamiliesDto: FamiliesDto, @Req() req) {
+    async updateFamily(@Param('id') id: number, @Body() FamiliesDto: FamiliesDto, @Req() req) {
 
-        const { firstname, lastname, phone, adress, cityID } = FamiliesDto
-        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, cityID)
+        const { firstname, lastname, phone, adress, city } = FamiliesDto
+        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, city)
     }
 
     @Delete('/:id') 
-    async deleteFamily(@Param('id') id: string, @Req() req) {
+    async deleteFamily(@Param('id') id: number, @Req() req) {
         return this.familiesService.deleteFamiliesService(id)
     }
 

@@ -17,17 +17,17 @@ let FamiliesService = class FamiliesService {
         this.FamiliesQueries = FamiliesQueries;
         this.FamiliesList = [];
     }
-    async createFamiliesService(lastname, firstname, adress, phone, cityId) {
+    async createFamiliesService(lastname, firstname, adress, phone, city) {
         try {
-            return await this.FamiliesQueries.createFamilyQuery(lastname, firstname, adress, phone, cityId);
+            return await this.FamiliesQueries.createFamilyQuery(lastname, firstname, adress, phone, city);
         }
         catch (error) {
             throw new common_1.BadRequestException(error.message);
         }
     }
-    async updateFamiliesService(id, lastname, firstname, adress, phone, cityId) {
+    async updateFamiliesService(id, lastname, firstname, adress, phone, city) {
         try {
-            return await this.FamiliesQueries.updateFamiliesQuery(id, lastname, firstname, adress, phone, cityId);
+            return await this.FamiliesQueries.updateFamiliesQuery(id, lastname, firstname, adress, phone, city);
         }
         catch (error) {
             throw new common_1.BadRequestException(error.message);

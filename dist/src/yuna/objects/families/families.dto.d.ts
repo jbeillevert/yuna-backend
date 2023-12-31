@@ -3,5 +3,5 @@ export declare class FamiliesDto {
     firstname: string;
     adress: string;
     phone: string;
-    cityID: number;
+    city: string;
 }
