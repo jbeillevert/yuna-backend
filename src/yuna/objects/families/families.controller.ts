@@ -20,7 +20,7 @@ export class FamiliesController {
     async createFamily(@Body() FamiliesDto: FamiliesDto, @Req() req) {
 
         const { firstname, lastname, phone, adress, city } = FamiliesDto
-        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, city)
+        return this.familiesService.createFamiliesService(lastname, firstname, adress, phone, city)
     }
 
 
@@ -28,7 +28,7 @@ export class FamiliesController {
     async updateFamily(@Param('id') id: number, @Body() FamiliesDto: FamiliesDto, @Req() req) {
 
         const { firstname, lastname, phone, adress, city } = FamiliesDto
-        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, city)
+        return this.familiesService.updateFamiliesService(id, lastname, firstname, adress, phone, city)
     }
 
     @Delete('/:id') 

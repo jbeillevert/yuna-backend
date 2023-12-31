@@ -4,8 +4,8 @@ export declare class FamiliesService {
     private readonly FamiliesQueries;
     constructor(FamiliesQueries: FamiliesQueries);
     FamiliesList: FamiliesModel[];
-    createFamiliesService(lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<void>;
-    updateFamiliesService(id: number, lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<void>;
+    createFamiliesService(lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<any[]>;
+    updateFamiliesService(id: number, lastname: string, firstname: string, adress: string, phone: string, city: string): Promise<any[]>;
     getAllFamiliesService(): Promise<any[]>;
     getOneFamiliesService(id: number): Promise<any[]>;
     deleteFamiliesService(id: number): Promise<void>;

@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator'
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator'
 
 
 export class FamiliesDto {
@@ -15,7 +15,7 @@ export class FamiliesDto {
     adress: string
 
     @IsString()
-    @IsNotEmpty()
+    @IsOptional()
     phone: string
     
     @IsString()

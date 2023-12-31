@@ -28,11 +28,11 @@ let FamiliesController = class FamiliesController {
     }
     async createFamily(FamiliesDto, req) {
         const { firstname, lastname, phone, adress, city } = FamiliesDto;
-        return this.familiesService.createFamiliesService(lastname, firstname, phone, adress, city);
+        return this.familiesService.createFamiliesService(lastname, firstname, adress, phone, city);
     }
     async updateFamily(id, FamiliesDto, req) {
         const { firstname, lastname, phone, adress, city } = FamiliesDto;
-        return this.familiesService.updateFamiliesService(id, lastname, firstname, phone, adress, city);
+        return this.familiesService.updateFamiliesService(id, lastname, firstname, adress, phone, city);
     }
     async deleteFamily(id, req) {
         return this.familiesService.deleteFamiliesService(id);
