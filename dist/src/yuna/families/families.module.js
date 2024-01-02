@@ -11,11 +11,15 @@ const common_1 = require("@nestjs/common");
 const families_controller_1 = require("./families.controller");
 const families_service_1 = require("./families.service");
 const familiesQueries_1 = require("./familiesQueries");
+const passport_1 = require("@nestjs/passport");
 let FamiliesModule = class FamiliesModule {
 };
 exports.FamiliesModule = FamiliesModule;
 exports.FamiliesModule = FamiliesModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
+        ],
         controllers: [families_controller_1.FamiliesController],
         providers: [families_service_1.FamiliesService, familiesQueries_1.FamiliesQueries]
     })

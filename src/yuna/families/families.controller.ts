@@ -1,8 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Body, Req, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Req, Param, UseGuards } from '@nestjs/common';
 import { FamiliesService } from './families.service';
 import { FamiliesDto } from './families.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { RolesGuard } from '../../tools/RBAC/roles.guards'
+import { Roles } from '../../tools/RBAC/role.decorators'
+import { Role } from '../../tools/RBAC/role.enum'
 
 @Controller('api/families')
+@UseGuards(AuthGuard('jwt'))
 export class FamiliesController {
     constructor(private familiesService: FamiliesService) {}
 
@@ -31,7 +36,9 @@ export class FamiliesController {
         return this.familiesService.updateFamiliesService(id, lastname, firstname, adress, phone, city)
     }
 
-    @Delete('/:id') 
+    @Delete('/:id')
+    @UseGuards(AuthGuard(), RolesGuard)
+    @Roles(Role.Admin) 
     async deleteFamily(@Param('id') id: number, @Req() req) {
         return this.familiesService.deleteFamiliesService(id)
     }

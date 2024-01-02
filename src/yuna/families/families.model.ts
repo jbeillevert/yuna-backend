@@ -8,6 +8,6 @@ export class FamiliesModel {
         public firstname: string,
         public adress: string,
         public phone: string,
-        public city: string, // clé etrangere vers table Cities
+        public city: string, 
     ) {}
 }

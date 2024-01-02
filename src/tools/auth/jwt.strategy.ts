@@ -11,12 +11,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: process.env.JWT_SECRET, // variable environnement
     });
+
   }
+
+
 
   async validate(payload: any) {  
   
     const user = await this.authService.validateUserById(payload.userId)
     
+    console.log("ici je log user : ", user);
     
 
     if (!user) {
