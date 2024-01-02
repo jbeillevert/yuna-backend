@@ -16,10 +16,6 @@ exports.FamiliesController = void 0;
 const common_1 = require("@nestjs/common");
 const families_service_1 = require("./families.service");
 const families_dto_1 = require("./families.dto");
-const passport_1 = require("@nestjs/passport");
-const roles_guards_1 = require("../../tools/RBAC/roles.guards");
-const role_decorators_1 = require("../../tools/RBAC/role.decorators");
-const role_enum_1 = require("../../tools/RBAC/role.enum");
 let FamiliesController = class FamiliesController {
     constructor(familiesService) {
         this.familiesService = familiesService;
@@ -76,8 +72,6 @@ __decorate([
 ], FamiliesController.prototype, "updateFamily", null);
 __decorate([
     (0, common_1.Delete)('/:id'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)(), roles_guards_1.RolesGuard),
-    (0, role_decorators_1.Roles)(role_enum_1.Role.Admin),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
@@ -86,7 +80,6 @@ __decorate([
 ], FamiliesController.prototype, "deleteFamily", null);
 exports.FamiliesController = FamiliesController = __decorate([
     (0, common_1.Controller)('api/families'),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     __metadata("design:paramtypes", [families_service_1.FamiliesService])
 ], FamiliesController);
 //# sourceMappingURL=families.controller.js.map

@@ -7,7 +7,6 @@ import { Roles } from '../../tools/RBAC/role.decorators'
 import { Role } from '../../tools/RBAC/role.enum'
 
 @Controller('api/families')
-@UseGuards(AuthGuard('jwt'))
 export class FamiliesController {
     constructor(private familiesService: FamiliesService) {}
 
@@ -37,8 +36,6 @@ export class FamiliesController {
     }
 
     @Delete('/:id')
-    @UseGuards(AuthGuard(), RolesGuard)
-    @Roles(Role.Admin) 
     async deleteFamily(@Param('id') id: number, @Req() req) {
         return this.familiesService.deleteFamiliesService(id)
     }
